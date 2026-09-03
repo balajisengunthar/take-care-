@@ -1,0 +1,234 @@
+.apology-page {
+  width: 100%;
+  max-width: 430px;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating hearts */
+.hearts-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.float-heart {
+  position: absolute;
+  bottom: -30px;
+  animation: floatHeart linear forwards;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+/* Top bar */
+.apology-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border-glass);
+  background: rgba(13, 6, 18, 0.75);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
+}
+
+.apology-brand {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--rose-light);
+  letter-spacing: 0.04em;
+}
+
+/* Main content */
+.apology-content {
+  flex: 1;
+  padding: 28px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Letter card */
+.letter-card {
+  padding: 36px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.letter-seal {
+  display: flex;
+  justify-content: center;
+}
+
+.letter-seal-icon {
+  font-size: 2.4rem;
+  animation: heartbeat 3s ease-in-out infinite;
+}
+
+.letter-heading {
+  font-size: 1.35rem;
+  text-align: center;
+  font-style: italic;
+  font-weight: 600;
+}
+
+.letter-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rose-dark), transparent);
+}
+
+.letter-body {
+  font-size: 1.05rem;
+  line-height: 2;
+  color: var(--text-secondary);
+  white-space: pre-line;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.letter-cursor {
+  display: inline-block;
+  color: var(--rose);
+  animation: blink 1s step-end infinite;
+  font-weight: 300;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+
+.letter-sign {
+  text-align: right;
+  font-size: 1rem;
+  color: var(--rose-light);
+  font-style: italic;
+  font-weight: 400;
+  border-top: 1px solid var(--border-glass);
+  padding-top: 14px;
+  margin-top: 4px;
+}
+
+/* ── Apology Pop-up Card ── */
+.apology-popup-card {
+  padding: 26px 22px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  border-color: rgba(76, 175, 130, 0.35) !important;
+  background: rgba(30, 45, 38, 0.8) !important;
+  box-shadow: 0 10px 36px rgba(0, 0, 0, 0.45), 0 0 24px rgba(76, 175, 130, 0.25);
+  border-radius: var(--radius-card);
+}
+
+.popup-icon {
+  font-size: 2.4rem;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.popup-msg {
+  font-size: 1.02rem;
+  line-height: 1.8;
+  color: #e2f4eb;
+  font-weight: 400;
+  font-style: italic;
+  margin: 0;
+  padding: 0 6px;
+}
+
+.accept-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.accept-btn {
+  width: 100%;
+  padding: 18px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  border-radius: var(--radius-full);
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(135deg, #3a9e6e 0%, #2a7a55 100%);
+  color: #fff;
+  box-shadow: 0 6px 28px rgba(58, 158, 110, 0.45);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  -webkit-tap-highlight-color: transparent;
+  animation: acceptPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes acceptPulse {
+  0%, 100% { box-shadow: 0 6px 28px rgba(58,158,110,0.45); }
+  50%       { box-shadow: 0 8px 48px rgba(58,158,110,0.75); transform: translateY(-2px); }
+}
+
+.accept-btn:active   { transform: scale(0.97) !important; }
+.accept-btn:disabled { opacity: 0.6; pointer-events: none; animation: none; }
+
+/* Accepted banner */
+.accepted-banner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border-color: rgba(76,175,130,0.25) !important;
+  background: rgba(76,175,130,0.06) !important;
+}
+
+.accepted-icon { font-size: 2.2rem; flex-shrink: 0; }
+
+.accepted-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--success);
+}
+
+.accepted-sub {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  margin-top: 3px;
+}
+
+/* Chat section */
+.chat-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chat-toggle-btn {
+  border-color: var(--rose-dark) !important;
+  color: var(--rose-light) !important;
+}
+
+.chat-toggle-btn:hover {
+  background: rgba(224, 91, 138, 0.08) !important;
+}
+
+.chat-wrapper {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+

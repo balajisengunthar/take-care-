@@ -1,0 +1,195 @@
+.music-player {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 40px);
+  max-width: 390px;
+  z-index: 100;
+  padding: 0;
+  overflow: hidden;
+  transition: var(--transition);
+  box-shadow: var(--shadow-card);
+}
+
+.music-pill {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.music-pill-info {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.music-pill-title {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.music-pill-badge {
+  font-size: 0.68rem;
+  padding: 2px 6px;
+  border-radius: 10px;
+  background: rgba(224, 91, 138, 0.2);
+  color: var(--rose);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.music-expand-icon {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* Animated EQ bars */
+.music-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 18px;
+  width: 20px;
+  flex-shrink: 0;
+}
+
+.music-bars span {
+  display: block;
+  width: 3px;
+  background: var(--rose);
+  border-radius: 2px;
+  height: 4px;
+  transition: height 0.2s ease;
+}
+
+.music-bars.active span:nth-child(1) { animation: eq 0.7s ease-in-out infinite alternate; height: 8px; }
+.music-bars.active span:nth-child(2) { animation: eq 0.5s ease-in-out infinite alternate 0.1s; height: 14px; }
+.music-bars.active span:nth-child(3) { animation: eq 0.6s ease-in-out infinite alternate 0.2s; height: 10px; }
+.music-bars.active span:nth-child(4) { animation: eq 0.8s ease-in-out infinite alternate 0.05s; height: 6px; }
+
+@keyframes eq {
+  from { height: 4px; }
+  to   { height: 16px; }
+}
+
+/* Expanded controls */
+.music-controls {
+  padding: 0 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  border-top: 1px solid var(--border-glass);
+}
+
+.music-header {
+  text-align: center;
+  padding-top: 12px;
+}
+
+.music-featured-tag {
+  font-size: 0.72rem;
+  color: #ff85a2;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.music-track-name {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-top: 2px;
+}
+
+.music-artist {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.music-progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+}
+
+.music-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--rose), var(--violet));
+  border-radius: 2px;
+  transition: width 0.2s linear;
+}
+
+.music-btns {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.music-icon-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+.music-icon-btn:hover { color: var(--rose); background: rgba(224,91,138,0.1); }
+
+.music-play-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--rose), var(--violet));
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(224, 91, 138, 0.4);
+  transition: var(--transition);
+  -webkit-tap-highlight-color: transparent;
+}
+.music-play-btn:active { transform: scale(0.93); }
+
+.youtube-btn {
+  font-size: 0.78rem;
+  color: #ff6b8b;
+  border: 1px solid rgba(255, 107, 139, 0.3);
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin-top: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.youtube-btn:hover {
+  background: rgba(255, 107, 139, 0.15);
+  border-color: #ff6b8b;
+}
+
+.youtube-embed-container {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}

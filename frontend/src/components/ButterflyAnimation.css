@@ -1,0 +1,90 @@
+.butterfly-screen {
+  min-height: 100dvh;
+  width: 100%;
+  max-width: 430px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(ellipse at 50% 50%, #1a0628 0%, var(--bg-deep) 100%);
+  transition: opacity 0.5s ease;
+}
+
+.butterfly-screen.fade-out { opacity: 0; }
+
+.bf-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.25;
+  pointer-events: none;
+}
+.bf-blob1 { width: 280px; height: 280px; background: radial-gradient(circle, #7b3fa8, transparent); top: 20%; left: -60px; animation: blobDrift 6s ease-in-out infinite alternate; }
+.bf-blob2 { width: 240px; height: 240px; background: radial-gradient(circle, #e05b8a, transparent); bottom: 20%; right: -40px; animation: blobDrift 8s ease-in-out infinite alternate-reverse; }
+
+/* Answer text — centred and fully visible */
+.bf-answer-text {
+  position: absolute;
+  top: 45%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  font-size: 1.35rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-primary);
+  text-shadow: 0 0 30px rgba(224, 91, 138, 0.7);
+  z-index: 10;
+  pointer-events: none;
+  animation: textGlow 3s ease-in-out infinite;
+  width: 90%;
+  max-width: 360px;
+  line-height: 1.6;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+@keyframes textGlow {
+  0%, 100% { text-shadow: 0 0 20px rgba(224,91,138,0.5); }
+  50%       { text-shadow: 0 0 50px rgba(224,91,138,0.9), 0 0 80px rgba(123,63,168,0.5); }
+}
+
+/* Butterfly container */
+.butterfly-wrap {
+  position: absolute;
+  z-index: 5;
+  animation: flyAcross linear forwards;
+}
+
+@keyframes flyAcross {
+  0%   { transform: translateX(0) translateY(0); opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translateX(calc(var(--dir, 1) * 50vw)) translateY(calc(var(--wave, 40px) * -1)); }
+  90%  { opacity: 1; }
+  100% { transform: translateX(calc(var(--dir, 1) * 110vw)) translateY(0); opacity: 0; }
+}
+
+.butterfly-svg { animation: flapWings 0.2s ease-in-out infinite alternate; }
+
+.wing-left  { transform-origin: 32px 34px; animation: flapLeft  0.2s ease-in-out infinite alternate; }
+.wing-right { transform-origin: 32px 34px; animation: flapRight 0.2s ease-in-out infinite alternate; }
+
+@keyframes flapLeft  { from { transform: rotateY(0deg); }  to { transform: rotateY(60deg); } }
+@keyframes flapRight { from { transform: rotateY(0deg); }  to { transform: rotateY(-60deg); } }
+@keyframes flapWings { from { transform: scaleY(1); }      to { transform: scaleY(0.7); } }
+
+/* Sparkles */
+.spark {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--spark-color, #e05b8a);
+  animation: sparkle 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(0);   opacity: 0; }
+  50%       { transform: scale(1.5); opacity: 0.9; }
+}
